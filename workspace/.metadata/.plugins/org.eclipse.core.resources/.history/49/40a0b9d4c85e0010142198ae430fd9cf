@@ -1,0 +1,12 @@
+import java.util.Locale;
+
+
+public class TestPrintBalance {
+	private PrintBalance german(){
+		return new PrintBalance(new Locale("de","DE"));
+	}
+	private PrintBalance english(){
+		return new PrintBalance(new Locale("de","DE"));
+	}
+
+}

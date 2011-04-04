@@ -1,0 +1,67 @@
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+/**
+ * TODO A simple class that needs to be localized
+ * 
+ * @author mohan. Created Mar 27, 2010.
+ */
+public class PrintBalance {
+	public Locale currentLocale;
+	public ResourceBundle messages;
+	/**
+	 * Simple Java Method that is crying out to be localized.
+	 * 
+	 * @param args
+	 */
+	public static void main(String args[]) {
+		PrintBalance printer = new PrintBalance(new Locale("fr","FR"));
+		printer.hello();
+		printer.enterName();
+		Scanner scanInput = new Scanner(System.in);
+		String name = scanInput.nextLine();
+		printer.nameString(name);
+		Date today = new Date();
+		printer.dateString(today);
+		printer.owed(9876543.21);
+		printer.bye();
+	}
+	
+	public PrintBalance(Locale currentLocale) {
+		this.currentLocale = currentLocale;
+		this.messages = ResourceBundle.getBundle("MessageBundle",currentLocale);
+	}
+	
+	public String bye() {
+		return messages.getString("goodbye");
+//		System.out.println(messages.getString("goodbye"));
+		
+	}
+	public void owed(double d) {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocale);
+		return messages.getString("youowe"),nf.format(9876543.21);
+		System.out.printf(messages.getString("youowe"),nf.format(9876543.21));
+		
+	}
+	public void dateString(Date today) {
+		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG,currentLocale);
+		System.out.printf(messages.getString("asof"),df.format(today));
+		
+	}
+	public void nameString(String name) {
+		System.out.printf(messages.getString("nicetomeetyou"),name);
+		
+	}
+	public void enterName() {
+		System.out.println(messages.getString("entername"));
+		
+	}
+	public void hello() {
+		System.out.println(messages.getString("helloworld"));
+		
+	}
+}

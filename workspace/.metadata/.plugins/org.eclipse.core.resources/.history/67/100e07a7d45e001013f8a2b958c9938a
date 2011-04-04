@@ -1,0 +1,41 @@
+import static org.junit.Assert.*;
+
+import java.util.Date;
+import java.util.Locale;
+
+import javax.xml.ws.ServiceMode;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class TestPrintBalance {
+	private static String name;
+	private static Date today;
+	private PrintBalance german(){
+		return new PrintBalance(new Locale("de","DE"));
+	}
+	private PrintBalance english(){
+		return new PrintBalance(new Locale("en","US"));
+	}
+	private PrintBalance french(){
+		return new PrintBalance(new Locale("fr","FR"));
+	}
+	@Before
+	public void setup(){
+		TestPrintBalance.name = "Bob Flanders";
+		TestPrintBalance.today = new Date(0);
+		
+	}
+	@Test
+	public void testEnglish(){
+		PrintBalance printer = english();
+		assertEquals("hello world",printer.hello());
+		assertEquals("hello world",printer.enterName());
+		assertEquals("hello world",printer.nameString(name));
+		assertEquals("hello world",printer.dateString(today));
+		assertEquals("hello world",printer.owed(9876543.21));
+		assertEquals("hello world",printer.bye());
+	}
+	
+
+}

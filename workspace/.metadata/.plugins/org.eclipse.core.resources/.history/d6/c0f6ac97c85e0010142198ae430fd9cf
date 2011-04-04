@@ -1,0 +1,86 @@
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+/**
+ * TODO A simple class that needs to be localized
+ * 
+ * @author mohan. Created Mar 27, 2010.
+ */
+public class PrintBalance {
+	public Locale currentLocale;
+	public ResourceBundle messages;
+	/**
+	 * Simple Java Method that is crying out to be localized.
+	 * 
+	 * @param args
+	 */
+	public PrintBalance(Locale currentLocale) {
+		this.currentLocale = currentLocale;
+		this.messages = ResourceBundle.getBundle("MessageBundle",currentLocale);
+	}
+	public static void main(String args[]) {
+		PrintBalance printer = new PrintBalance(new Locale("fr","FR"));
+		printer.printHello();
+		printer.printEnterName();
+		Scanner scanInput = new Scanner(System.in);
+		String name = scanInput.nextLine();
+		printer.printName(name);
+		Date today = new Date();
+		printer.printDate(today);
+		printer.printOwed(9876543.21);
+		printer.printBye();
+	}
+	private void printBye() {
+		System.out.println(messages.getString("goodbye"));
+		
+	}
+	private void printOwed(double d) {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocale);
+		System.out.printf(messages.getString("youowe"),nf.format(9876543.21));
+		
+	}
+	private void printDate(Date today) {
+		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG,currentLocale);
+		System.out.printf(messages.getString("asof"),df.format(today));
+		
+	}
+	private void printName(String name) {
+		System.out.printf(messages.getString("nicetomeetyou"),name);
+		
+	}
+	private void printEnterName() {
+		System.out.println(messages.getString("entername"));
+		
+	}
+	private void printHello() {
+		System.out.println(messages.getString("helloworld"));
+		
+	}
+	private static void printName(Locale currentLocale, String name) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void printFirstMessages(Locale currentLocale){
+		
+		
+
+		
+
+		// Get User's Name
+
+		
+
+
+		// print today's date, balance and bid goodbye
+
+
+
+	}
+	public static void printNextMessages(Locale currentLocale){
+		
+	}
+}

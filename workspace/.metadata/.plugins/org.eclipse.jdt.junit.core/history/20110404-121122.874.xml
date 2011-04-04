@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="TestPrintBalance" project="Localization" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="TestPrintBalance" time="0.015">
+    <testcase name="testEnglish" classname="TestPrintBalance" time="0.012"/>
+    <testcase name="testFrench" classname="TestPrintBalance" time="0.003"/>
+  </testsuite>
+</testrun>

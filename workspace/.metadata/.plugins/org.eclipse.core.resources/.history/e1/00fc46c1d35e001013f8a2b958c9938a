@@ -1,0 +1,30 @@
+import static org.junit.Assert.*;
+
+import java.util.Locale;
+
+import org.junit.Test;
+
+public class TestPrintBalance {
+	private static String name = "Name";
+	private static Date today = new Date(1999,12,5);
+	private PrintBalance german(){
+		return new PrintBalance(new Locale("de","DE"));
+	}
+	private PrintBalance english(){
+		return new PrintBalance(new Locale("en","US"));
+	}
+	private PrintBalance french(){
+		return new PrintBalance(new Locale("fr","FR"));
+	}
+	@Test
+	public void testEnglish(){
+		PrintBalance printer = english();
+		assertEquals("hello world",printer.hello());
+		assertEquals("hello world",printer.enterName());
+		assertEquals("hello world",printer.nameString(name));
+		assertEquals("hello world",printer.hello());
+		assertEquals("hello world",printer.hello());
+	}
+	
+
+}

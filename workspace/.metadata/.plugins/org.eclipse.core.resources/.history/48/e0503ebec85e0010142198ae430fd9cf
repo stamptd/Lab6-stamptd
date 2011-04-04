@@ -1,0 +1,9 @@
+
+
+public class TestPrintBalance {
+	private void german(){
+		return new PrintBalance(new Locale("de","DE"));
+		
+	}
+
+}
